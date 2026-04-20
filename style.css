@@ -1,0 +1,341 @@
+:root {
+    --primary-blue: #0A58CA;
+    --primary-green: #25D366; /* Verde WhatsApp otimizado para conversão */
+    --btn-hover: #1EBE57;
+    --footer-green: #11784A;
+    --text-dark: #333333;
+    --bg-color: #FAFAFA;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    padding-bottom: 80px;
+    overflow-x: hidden;
+}
+
+/* --- Animações de Fundo --- */
+.bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.plane {
+    position: absolute;
+    font-size: 2rem;
+    top: 15%;
+    left: -10%;
+    opacity: 0.4;
+    animation: fly 25s linear infinite;
+}
+
+.cloud {
+    position: absolute;
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-shadow: 0 0 10px rgba(0,0,0,0.05);
+    opacity: 0.5;
+}
+.cloud1 { top: 20%; left: -20%; animation: drift 35s linear infinite; }
+.cloud2 { top: 60%; left: -20%; animation: drift 45s linear infinite 10s; }
+.cloud3 { top: 80%; left: -20%; animation: drift 30s linear infinite 5s; }
+
+@keyframes fly {
+    0% { transform: translateX(0vw) translateY(0) rotate(15deg); }
+    100% { transform: translateX(120vw) translateY(-20vh) rotate(15deg); }
+}
+
+@keyframes drift {
+    0% { transform: translateX(0vw); }
+    100% { transform: translateX(120vw); }
+}
+
+/* --- Layout Principal --- */
+.page-wrapper {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.header h1 {
+    font-size: 3.2rem;
+    line-height: 1.1;
+    font-weight: 900;
+    color: #222;
+    letter-spacing: -1.5px;
+}
+
+.header .highlight-blue {
+    color: var(--primary-blue);
+    font-size: 4rem;
+    display: block;
+    text-transform: uppercase;
+}
+
+/* --- Contador de Pessoas (Prova Social) --- */
+.live-counter {
+    background: #FFE5E5;
+    border: 1px solid #FFCCCC;
+    padding: 8px 16px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.1);
+}
+
+.live-counter p {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #D32F2F;
+    margin: 0;
+}
+
+.pulse-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #D32F2F;
+    border-radius: 50%;
+    animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse-red {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(211, 47, 47, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+}
+
+/* --- Mockup do Celular --- */
+.phone-mockup {
+    position: relative;
+    width: 260px;
+    height: 480px;
+    background-color: #111;
+    border-radius: 36px;
+    padding: 8px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25), inset 0 0 0 2px #444;
+    margin: 0 auto 3rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.volume-buttons { position: absolute; left: -4px; top: 90px; width: 4px; height: 60px; background: #333; border-radius: 4px 0 0 4px; }
+.power-button { position: absolute; right: -4px; top: 110px; width: 4px; height: 40px; background: #333; border-radius: 0 4px 4px 0; }
+.phone-notch { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 130px; height: 25px; background-color: #111; border-bottom-left-radius: 14px; border-bottom-right-radius: 14px; z-index: 2; display: flex; align-items: center; justify-content: center; }
+.camera-lens { width: 10px; height: 10px; background: #050505; border-radius: 50%; box-shadow: inset 0 0 3px rgba(255,255,255,0.2); margin-left: 30px; }
+
+/* Tela interna animada */
+.phone-screen {
+    width: 100%;
+    height: 100%;
+    background: #0A58CA;
+    border-radius: 28px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Promoções rolando na tela */
+.promo-feed {
+    padding: 40px 10px 0 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: scroll-feed 12s linear infinite;
+}
+
+@keyframes scroll-feed {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+.promo-item {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.promo-item .route { font-size: 0.8rem; font-weight: 600; opacity: 0.9; }
+.promo-item .price { font-size: 1.1rem; font-weight: 800; color: #FFF; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+
+/* --- Cartão Central --- */
+.info-card {
+    position: absolute;
+    width: 120%; 
+    max-width: 320px;
+    background: var(--white);
+    padding: 1.5rem 1rem;
+    border-radius: 14px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+    text-align: center;
+    z-index: 3;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.info-card h2 { font-size: 1.4rem; font-weight: 800; color: #333; margin-bottom: 0.5rem; }
+.info-card .badge { background-color: var(--primary-blue); color: var(--white); font-size: 1.4rem; font-weight: 900; padding: 0.5rem; border-radius: 6px; margin-bottom: 1rem; display: block; text-transform: uppercase;}
+.info-card p { font-size: 0.95rem; font-weight: 600; color: #555; line-height: 1.4; }
+
+/* --- Call to Action --- */
+.cta-section {
+    text-align: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.cta-subtitle {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #D32F2F;
+    margin-bottom: 0.8rem;
+}
+
+.btn-primary {
+    display: block;
+    width: 100%;
+    background-color: var(--primary-green);
+    color: var(--white);
+    text-decoration: none;
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    border-radius: 12px;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+    background-color: var(--btn-hover);
+    transform: translateY(-3px);
+}
+
+.pulse-button {
+    animation: btn-pulse 2s infinite;
+}
+
+@keyframes btn-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* --- Botão Flutuante WhatsApp --- */
+.floating-wa {
+    position: fixed;
+    bottom: 90px; /* Acima do rodapé fixo */
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    z-index: 100;
+    transition: transform 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+.floating-wa:hover {
+    transform: scale(1.1);
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+
+/* --- Direitos e Rodapé --- */
+.copyright {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: #888;
+    text-align: center;
+    width: 100%;
+}
+
+.sticky-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--white);
+    padding: 1rem;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-footer {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    background-color: var(--footer-green);
+    color: var(--white);
+    text-align: center;
+    text-decoration: none;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 800;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    text-transform: uppercase;
+}
+
+.btn-footer:hover { background-color: #0c5735; }
+
+@media (min-width: 768px) {
+    body {
+        display: flex;
+        justify-content: center;
+        background-color: #e9ecef;
+    }
+    .page-wrapper {
+        background-color: var(--bg-color);
+        box-shadow: 0 0 50px rgba(0,0,0,0.08);
+        position: relative;
+    }
+    .floating-wa {
+        /* Mantém o botão preso próximo ao design central no PC */
+        right: calc(50% - 300px); 
+    }
+}
